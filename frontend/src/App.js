@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 // Firebase
 import firebaseConfig from "./firebaseConfig";
 import { initializeApp } from "firebase/app";
+import { getFunctions } from "firebase/functions"; // Call FB functions in your app
 import {
   getAuth,
   onAuthStateChanged,
@@ -21,7 +22,9 @@ import {
   signOut,
 } from "firebase/auth";
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+// Access your FB functions
+const functions = getFunctions(app);
 
 // Enable Google-based auth login
 const auth = getAuth();

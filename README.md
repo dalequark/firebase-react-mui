@@ -11,4 +11,19 @@
             "measurementId": "MEASUREMENT_ID"
         }
 3. In this directory, run `npm install` (this installs `firebase-cli`).
-4. Run `firebase login` and log in.
+4. If you haven't already: `npm install -g firebase-tools`.
+5. Run `firebase login` and log in.
+
+# Firebase Functions
+1. If using Firebase Functions, log in and install npm packages: `cd functions && npm install`.
+2. `firebase deploy --only functions`
+
+# Hosting
+// Todo
+
+# Firestore
+// Todo
+
+# Storage
+
+
