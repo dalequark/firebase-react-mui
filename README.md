@@ -25,5 +25,7 @@
 // Todo
 
 # Storage
-
+1. Edit `storage.rules` to your liking.
+2. Deploy storage rules `firebase deploy --only storage:rules`.
+3. Allow CORS for testing: `gsutil cors set cors.json gs://YOUR_BUCKET_NAME`
 

@@ -1,7 +1,7 @@
 import "./App.css";
+import React, { useEffect, useState } from "react";
 
 // Material
-import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -22,6 +22,9 @@ import {
   signOut,
 } from "firebase/auth";
 
+// Components
+import {FileUploader, FileList} from "./components/StorageComponents";
+
 const app = initializeApp(firebaseConfig);
 // Access your FB functions
 const functions = getFunctions(app);
@@ -38,8 +41,16 @@ function signOut2() {
   signOut(auth);
 }
 
+function InnerApp(props) {
+  const {userid} = props;
+
+  return <Box sx={{ flexGrow: 1, margin: 10 }}>
+    <FileList userid={userid}></FileList>
+  </Box>;
+}
+
 /* props.pageName */
-function App(props) {
+function AuthApp(props) {
   const { pageName } = props;
   const [user, setUser] = useState(null);
 
@@ -51,7 +62,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1}}>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -77,10 +88,10 @@ function App(props) {
             )}
           </Toolbar>
         </AppBar>
+        {user ? <InnerApp userid={user}/> : ""}
       </Box>
-      <div>{user && "User is logged in"}</div>
     </div>
   );
 }
 
-export default App;
+export default AuthApp;
