@@ -14,6 +14,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -142,8 +143,8 @@ function FileList(props) {
         }}
       ></FileUploader>
       <Grid item xs={12} md={6}>
-        <Box sx={{ flexGrow: 1, flexDirection: "column" }}>
-          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mt: 4, mb: 2 }}>
+          <Typography variant="h6" component="div">
             Files
           </Typography>
           <IconButton
@@ -160,8 +161,8 @@ function FileList(props) {
           <List>
             {fileList.map((item, idx) => {
               return (
+                <Paper key={item.fullPath} elevation={2}>
                 <ListItem
-                  key={item.fullPath}
                   secondaryAction={
                     <>
                       <IconButton
@@ -187,6 +188,7 @@ function FileList(props) {
                 >
                   <ListItemText primary={item.name} />
                 </ListItem>
+                </Paper>
               );
             })}
           </List>
